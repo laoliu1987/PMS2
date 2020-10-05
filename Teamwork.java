@@ -2,12 +2,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Teamwork {
-    public static TSUtility ts;
-    public static StringChange s;
-    static List TeamList=new ArrayList();
-    static int ArchitectNum;
-    static int DesignerNum;
-    static int ProgrammerNum;
+    private static TSUtility ts;
+    private static StringChange s;
+    private static int ArchitectNum;
+    private static int DesignerNum;
+    private static int ProgrammerNum;
+    private static List TeamList=new ArrayList();
     static List list=new ArrayList();
     //显示当前所有人员信息
     public static void showID(List list){
