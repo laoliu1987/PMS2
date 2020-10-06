@@ -1,3 +1,13 @@
+package team;
+
+import device.Notebook;
+import device.PC;
+import device.Printer;
+import person.Architect;
+import person.Designer;
+import person.Person;
+import person.Programmer;
+import tool.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,15 +17,20 @@ public class Teamwork {
     private static int ArchitectNum;
     private static int DesignerNum;
     private static int ProgrammerNum;
-    private static List TeamList=new ArrayList();
-    static List list=new ArrayList();
+    static Notebook nt=new Notebook();
+    static PC pc=new PC();
+    static Printer pr=new Printer();
+
+    public static List TeamList=new ArrayList();
+    public static List list=new ArrayList();
+
     //显示当前所有人员信息
     public static void showID(List list){
-        System.out.println("ID        姓名      年龄       职位      工资      状态       奖金      股票");
+        System.out.println("ID        姓名      年龄       职位      工资      状态       奖金      股票      领用设备");
         for(int i=0;i< list.size();i++){
             Person obj= (Person) list.get(i);
             System.out.print(s.changeLength((list.indexOf(obj)+1)));
-            System.out.println(obj.show());
+            System.out.println(obj.show()+showDevice(obj));
         }
         show();
     }
@@ -37,7 +52,7 @@ public class Teamwork {
 
         if (TeamList.isEmpty())
         {
-            System.out.println("----------------------团队成员列表----------------------");
+            System.out.println("-----------------------------团队成员列表------------------------------");
             System.out.println("开发团队没有任何成员！");
             show();
         }
@@ -56,11 +71,11 @@ public class Teamwork {
             else
             {
                 String NAME = list.get(ID-1).getClass().getName();
-                if(NAME.equals("Person"))
+                if(NAME.equals("person.Person"))
                 {
                     System.out.println("该成员无效");
                 }
-                if(NAME.equals("Architect")){
+                if(NAME.equals("person.Architect")){
                     if(ArchitectNum>=1){
                         System.out.println("不能再添加更多的架构师了");
                     }else{
@@ -72,7 +87,7 @@ public class Teamwork {
                         ArchitectNum++;
                     }
                 }
-                if(NAME.equals("Designer")){
+                if(NAME.equals("person.Designer")){
                     if(DesignerNum>=2){
                         System.out.println("不能再添加更多的设计师了");
                     }else{
@@ -84,7 +99,7 @@ public class Teamwork {
                         DesignerNum++;
                     }
                 }
-                if (NAME.equals("Programmer")){
+                if (NAME.equals("person.Programmer")){
                     if(ProgrammerNum>=2){
                         System.out.println("不能再添加更多的程序员了");
                     }else{
@@ -112,17 +127,17 @@ public class Teamwork {
             int Num=list.indexOf(obj);
             Object obj1=list.get(Num);
             String str=obj1.getClass().getName();
-            if(str.equals("Architect"))
+            if(str.equals("person.Architect"))
             {
                 Architect arc=(Architect)obj1;
                 arc.setSituation(false);
             }
-            if(str.equals("Designer"))
+            if(str.equals("person.Designer"))
             {
                 Designer des=(Designer)obj1;
                 des.setSituation(false);
             }
-            if(str.equals("Programmer")){
+            if(str.equals("person.Programmer")){
                 Programmer pro=(Programmer)obj1;
                 pro.setSituation(false);
             }
@@ -156,5 +171,48 @@ public class Teamwork {
             System.out.println("程序已退出");
             System.exit(0);
         }
+    }
+
+    public static String showDevice(Object obj){
+        String str=obj.getClass().getName();
+
+        try {
+            if (str.equals("person.Architect")) {
+                Architect arc = (Architect) obj;
+                String dvn = arc.getDevicename();
+                if (dvn.equals("device.Notebook")) {
+                    return (nt.device(arc.getDeviceNumber()));
+                }else if(dvn.equals("device.PC")) {
+                    return (pc.device(arc.getDeviceNumber()));
+                }else if(dvn.equals("device.Printer")){
+                    return (pr.device(arc.getDeviceNumber()));
+                }
+
+            } else if (str.equals("person.Designer")) {
+                Designer des = (Designer) obj;
+                String dvn = des.getDevicename();
+                if (dvn.equals("device.Notebook")) {
+                    return (nt.device(des.getDeviceNumber()));
+                }else if(dvn.equals("device.PC")) {
+                    return (pc.device(des.getDeviceNumber()));
+                }else if(dvn.equals("device.Printer")){
+                    return (pr.device(des.getDeviceNumber()));
+                }
+            } else if (str.equals("person.Programmer")) {
+                Programmer pro = (Programmer) obj;
+                String dvn = pro.getDevicename();
+                if (dvn.equals("device.Notebook")) {
+                    return (nt.device(pro.getDeviceNumber()));
+                }else if(dvn.equals("device.PC")) {
+                    return (pc.device(pro.getDeviceNumber()));
+                }else if(dvn.equals("device.Printer")){
+                    return (pr.device(pro.getDeviceNumber()));
+                }
+            }
+        }catch (Exception e){
+            return "内部错误";
+        }
+
+        return "";
     }
 }

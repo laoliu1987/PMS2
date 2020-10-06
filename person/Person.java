@@ -1,3 +1,5 @@
+package person;
+import tool.*;
 public class Person implements IShow{
     private String name;
     private int age;

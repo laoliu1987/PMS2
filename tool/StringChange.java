@@ -1,3 +1,5 @@
+package tool;
+
 public class StringChange {
     //字符转换
 
