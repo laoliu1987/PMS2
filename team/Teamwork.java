@@ -173,6 +173,7 @@ public class Teamwork {
         }
     }
 
+    //显示领用设备
     public static String showDevice(Object obj){
         String str=obj.getClass().getName();
 
