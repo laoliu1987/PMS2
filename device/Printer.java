@@ -3,7 +3,7 @@ package device;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Printer implements Device{
+public class Printer implements IDevice {
     private String name;
 
     Map map =new HashMap() {

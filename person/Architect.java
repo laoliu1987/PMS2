@@ -1,4 +1,9 @@
 package person;
+
+import device.IDevice;
+import device.PC;
+import device.Printer;
+
 public class Architect extends Person implements IShow{
 
     private double bonus;
@@ -7,6 +12,7 @@ public class Architect extends Person implements IShow{
     private String position="架构师";
     private String devicename;
     private int deviceNumber;
+    IDevice idv=new PC();
     public String getPosition() {
         return position;
     }
@@ -69,5 +75,10 @@ public class Architect extends Person implements IShow{
     public String showTeam() {
         String b= s.changeLength(getName())+s.changeLength(getAge())+s.changeLength(getPosition())+s.changeLength(getSalary())+s.changeLength(getBonus())+s.changeLength(getShares());
         return b;
+    }
+
+    @Override
+    public String showDevice() {
+        return null;
     }
 }

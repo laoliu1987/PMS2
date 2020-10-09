@@ -1,10 +1,15 @@
 package person;
+
+import device.IDevice;
+import device.Notebook;
+
 public class Programmer extends Person implements IShow{
 
     private String position="程序员";
     private boolean situation=false;
     private String devicename;
     private int deviceNumber;
+    IDevice idv=new Notebook();
     public String getPosition() {
         return position;
     }
@@ -45,5 +50,10 @@ public class Programmer extends Person implements IShow{
     public String showTeam() {
         String b=(s.changeLength(getName())+s.changeLength(getAge())+s.changeLength(getPosition())+s.changeLength(getSalary()));
         return b;
+    }
+
+    @Override
+    public String showDevice() {
+        return null;
     }
 }

@@ -122,32 +122,36 @@ public class Teamwork {
     public static void TeamDelete(){
         System.out.println("请输入移除成员的ID：");
         int ID=ts.readInt();
-        try{
-            Object obj=TeamList.get(ID-1);
-            int Num=list.indexOf(obj);
-            Object obj1=list.get(Num);
-            String str=obj1.getClass().getName();
-            if(str.equals("person.Architect"))
-            {
-                Architect arc=(Architect)obj1;
-                arc.setSituation(false);
+        System.out.println("确定移除该成员？(Y/N)");
+        char select=ts.readConfirmSelection();
+        if(select=='Y') {
+            try {
+                Object obj = TeamList.get(ID - 1);
+                int Num = list.indexOf(obj);
+                Object obj1 = list.get(Num);
+                String str = obj1.getClass().getName();
+                if (str.equals("person.Architect")) {
+                    Architect arc = (Architect) obj1;
+                    arc.setSituation(false);
+                }else if (str.equals("person.Designer")) {
+                    Designer des = (Designer) obj1;
+                    des.setSituation(false);
+                }else if (str.equals("person.Programmer")) {
+                    Programmer pro = (Programmer) obj1;
+                    pro.setSituation(false);
+                }
+                TeamList.remove(ID - 1);
+                System.out.println("移除成员成功");
+                show();
+            } catch (Exception e) {
+                System.out.println("移除成员失败");
+                show();
             }
-            if(str.equals("person.Designer"))
-            {
-                Designer des=(Designer)obj1;
-                des.setSituation(false);
-            }
-            if(str.equals("person.Programmer")){
-                Programmer pro=(Programmer)obj1;
-                pro.setSituation(false);
-            }
-            TeamList.remove(ID-1);
-            System.out.println("移除成员成功");
-            show();
-        }catch (Exception e){
-            System.out.println("移除成员失败");
+        }else if
+            (select == 'N') {
             show();
         }
+
     }
 
     //显示菜单页面
@@ -178,7 +182,7 @@ public class Teamwork {
         String str=obj.getClass().getName();
 
         try {
-            if (str.equals("person.Architect")) {
+            if (obj instanceof Architect){
                 Architect arc = (Architect) obj;
                 String dvn = arc.getDevicename();
                 if (dvn.equals("device.Notebook")) {

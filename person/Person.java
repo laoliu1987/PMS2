@@ -48,4 +48,9 @@ public class Person implements IShow{
     public String showTeam() {
         return null;
     }
+
+    @Override
+    public String showDevice() {
+        return null;
+    }
 }

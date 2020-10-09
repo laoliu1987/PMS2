@@ -1,11 +1,14 @@
 package person;
 
+import device.IDevice;
+import device.Printer;
+
 public class Designer extends Person implements IShow{
 
     private double bonus;
     private String position="设计师";
     private boolean situation=false;
-
+    IDevice idv=new Printer();
     private String devicename;
     private int deviceNumber;
     public Designer(){
@@ -62,5 +65,10 @@ public class Designer extends Person implements IShow{
     public String showTeam() {
         String b=(s.changeLength(getName())+s.changeLength(getAge())+s.changeLength(getPosition())+s.changeLength(getSalary())+s.changeLength(getBonus()));
         return b;
+    }
+
+    @Override
+    public String showDevice() {
+        return null;
     }
 }

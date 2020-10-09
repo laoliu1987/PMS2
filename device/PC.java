@@ -3,7 +3,7 @@ package device;
 import java.util.HashMap;
 import java.util.Map;
 
-public class PC implements Device{
+public class PC implements IDevice {
     private String name="11";
 
     Map map =new HashMap() {

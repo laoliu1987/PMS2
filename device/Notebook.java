@@ -3,7 +3,7 @@ package device;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Notebook implements Device {
+public class Notebook implements IDevice {
 
     private String name="11";
 

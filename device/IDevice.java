@@ -1,6 +1,6 @@
 package device;
 
-public interface Device{
+public interface IDevice {
     /*
     设备接口
     */
