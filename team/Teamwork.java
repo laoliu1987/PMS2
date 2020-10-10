@@ -157,25 +157,26 @@ public class Teamwork {
     //显示菜单页面
     public static void show() {
         System.out.println("---------------------------------------------------------------------");
-        System.out.println("1-团队列表 2-添加团队成员 3-删除团队成员 4-显示所有人状态 5-退出 请选择（1-4)");
+        System.out.println("1-团队列表 2-添加团队成员 3-删除团队成员 4-显示所有人状态 5-退出 请选择（1-5)");
         char a=ts.readMenuSelection();
-        if(a == '1') {
-            TeamList();
+        switch (a) {
+            case '1':
+                TeamList();
+                break;
+            case '2':
+                TeamAdd();
+                break;
+            case '3':
+                TeamDelete();
+                break;
+            case '4':
+                showID(list);
+                break;
+            case '5':
+                System.out.println("程序已退出");
+                System.exit(0);
+            }
         }
-        else if(a == '2')
-        {TeamAdd();}
-        else if(a=='3')
-        {TeamDelete();}
-        else if(a=='4')
-        {
-            showID(list);
-        }
-        else if(a=='5')
-        {
-            System.out.println("程序已退出");
-            System.exit(0);
-        }
-    }
 
     //显示领用设备
     public static String showDevice(Object obj){
