@@ -194,7 +194,7 @@ public class Teamwork {
                     return (pr.device(arc.getDeviceNumber()));
                 }
 
-            } else if (str.equals("person.Designer")) {
+            } else if (obj instanceof Designer) {
                 Designer des = (Designer) obj;
                 String dvn = des.getDevicename();
                 if (dvn.equals("device.Notebook")) {
@@ -204,7 +204,7 @@ public class Teamwork {
                 }else if(dvn.equals("device.Printer")){
                     return (pr.device(des.getDeviceNumber()));
                 }
-            } else if (str.equals("person.Programmer")) {
+            } else if (obj instanceof Programmer) {
                 Programmer pro = (Programmer) obj;
                 String dvn = pro.getDevicename();
                 if (dvn.equals("device.Notebook")) {
